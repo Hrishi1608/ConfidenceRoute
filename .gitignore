@@ -1,0 +1,36 @@
+# Python virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Environment variables / secrets
+.env
+.env.*
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+
+# Generated ML/model files
+*.pkl
+
+# Python test/cache files
+.pytest_cache/
+.mypy_cache/
+
+# Logs
+*.log
+
+# Node.js
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Frontend environment files
+frontend/.env

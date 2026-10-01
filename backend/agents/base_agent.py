@@ -1,10 +1,11 @@
 import requests
-
+import os
 
 class BaseAgent:
     def __init__(self, model="llama3:8b"):
         self.model = model
-        self.ollama_url = "http://localhost:11434/api/generate"
+        host = os.getenv("OLLAMA_HOST", "http://localhost:11434")
+        self.ollama_url = f"{host}/api/generate"
 
     def run(self, prompt):
         response = requests.post(

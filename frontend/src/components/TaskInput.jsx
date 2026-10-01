@@ -1,27 +1,39 @@
 import { useState } from "react";
 
-export default function TaskInput({ onSubmit }) {
+export default function TaskInput({ onSubmit, isRunning }) {
   const [task, setTask] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (task.trim()) {
+    if (task.trim() && !isRunning) {
       onSubmit(task);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
-      <input
-        type="text"
-        value={task}
-        onChange={(e) => setTask(e.target.value)}
-        placeholder="Enter your task here..."
-        style={{ width: "300px", padding: "8px" }}
-      />
-      <button type="submit" style={{ padding: "8px 16px", marginLeft: "8px" }}>
-        Run Task
-      </button>
-    </form>
+    <div className="card">
+      <form onSubmit={handleSubmit}>
+        <div className="input-group">
+          <input
+            type="text"
+            className="input-field"
+            value={task}
+            onChange={(e) => setTask(e.target.value)}
+            placeholder="Ask a complex question..."
+            disabled={isRunning}
+          />
+          <button type="submit" className="btn" disabled={!task.trim() || isRunning}>
+            {isRunning ? (
+              <>
+                <div className="spinner animate-spin"></div>
+                Thinking...
+              </>
+            ) : (
+              "Run Task"
+            )}
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }

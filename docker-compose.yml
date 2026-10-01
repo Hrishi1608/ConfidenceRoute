@@ -3,11 +3,12 @@ version: '3.8'
 services:
   backend:
     build:
-      context: ./backend
+      context: .
+      dockerfile: backend/Dockerfile
     ports:
       - "8000:8000"
     volumes:
-      - ./backend:/app
+      - .:/project
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - OLLAMA_HOST=http://host.docker.internal:11434

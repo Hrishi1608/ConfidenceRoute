@@ -3,8 +3,8 @@ from backend.tools.web_search import web_search
 
 
 class ReActAgent(BaseAgent):
-    def __init__(self, max_steps=5):
-        super().__init__()
+    def __init__(self, max_steps=5, model="llama3:8b"):
+        super().__init__(model=model)
         self.max_steps = max_steps
 
     def run_task(self, task):

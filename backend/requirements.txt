@@ -1,5 +1,5 @@
 requests
-duckduckgo-search
+ddgs
 docker
 pandas
 scikit-learn

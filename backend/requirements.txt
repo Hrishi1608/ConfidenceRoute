@@ -1,3 +1,7 @@
 requests
 duckduckgo-search
 docker
+pandas
+scikit-learn
+datasets
+joblib

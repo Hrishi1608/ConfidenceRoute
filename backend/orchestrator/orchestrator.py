@@ -42,6 +42,15 @@ def run_task(task: str, log: list) -> str:
         confidence = score_confidence(task, answer)
         log.append({"step": f"retry_{retries}", "confidence": confidence, "model": model_used})
         
+    import re
+    if re.search(r"\d+", answer):
+        from backend.agents.verifier import VerifierAgent
+        verifier = VerifierAgent()
+        verification = verifier.verify(answer)
+        log.append({"step": "dynamic_verifier_inserted", "verification": verification, "model": "llama3:8b"})
+        # We can append verification to the answer or just let the log capture it
+        answer += f"\n\n[Auto-Verification Added]: {verification}"
+        
     return answer
 
 if __name__ == "__main__":

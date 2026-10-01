@@ -1,10 +1,12 @@
 FROM python:3.11-slim
 
-WORKDIR /app
+WORKDIR /project
 
-COPY requirements.txt .
-RUN pip install --default-timeout=100 --no-cache-dir -r requirements.txt
+COPY backend/requirements.txt backend/
+RUN pip install --default-timeout=100 --no-cache-dir -r backend/requirements.txt
 
 COPY . .
 
-CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+ENV PYTHONPATH=/project
+
+CMD ["uvicorn", "backend.api.main:app", "--host", "0.0.0.0", "--port", "8000"]

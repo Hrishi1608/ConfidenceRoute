@@ -5,3 +5,6 @@ pandas
 scikit-learn
 datasets
 joblib
+fastapi
+uvicorn
+websockets
